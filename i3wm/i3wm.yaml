@@ -1,0 +1,40 @@
+---
+- name: "i3wm: Install packages"
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - i3
+      - i3status
+      - i3lock
+      - dunst
+      - dmenu
+      - playerctl
+      - gnome-terminal
+      - cool-retro-term
+    state: latest
+  register: i3wm_packages
+
+- name: "i3wm: Copy configuration files"
+  copy:
+    src: "{{ item }}"
+    dest: "~/.config/{{ item }}"
+  register: i3wm_config
+  with_items:
+    - i3/config
+    - i3/background.png
+    - i3status/config
+
+- name: "i3wm: Copy i3status scripts"
+  copy:
+    src: "i3status/scripts/{{ item }}"
+    dest: "~/.config/i3status/scripts/{{ item }}"
+    mode: 0755
+  register: i3wm_scripts
+  with_items:
+    - wrapper.py
+
+- name: "i3wm: Restart i3"
+  shell: "i3 restart"
+  when:
+    i3wm_packages.changed or i3wm_config.changed or i3wm_scripts.changed
+...

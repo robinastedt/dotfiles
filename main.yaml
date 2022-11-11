@@ -1,0 +1,7 @@
+
+---
+- name: Install configuration
+  hosts: localhost
+  tasks:
+    - include_tasks: i3wm/i3wm.yaml
+...
