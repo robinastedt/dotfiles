@@ -14,6 +14,16 @@
     state: latest
   register: i3wm_packages
 
+- name: "i3wm: Create directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/.config/i3
+    - ~/.config/i3/scripts
+    - ~/.config/i3status
+    - ~/.config/i3status/scripts
+
 - name: "i3wm: Copy configuration files"
   copy:
     src: "{{ item }}"
@@ -24,14 +34,15 @@
     - i3/background.png
     - i3status/config
 
-- name: "i3wm: Copy i3status scripts"
+- name: "i3wm: Copy scripts"
   copy:
-    src: "i3status/scripts/{{ item }}"
-    dest: "~/.config/i3status/scripts/{{ item }}"
+    src: "{{ item }}"
+    dest: "~/.config/{{ item }}"
     mode: 0755
   register: i3wm_scripts
   with_items:
-    - wrapper.py
+    - i3status/scripts/wrapper.py
+    - i3/scripts/autostart.sh
 
 - name: "i3wm: Restart i3"
   shell: "i3 restart"
