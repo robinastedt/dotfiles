@@ -13,6 +13,7 @@ general {
 }
 
 order += "ethernet _first_"
+order += "wireless _first_"
 # order += "ipv6 _first_"
 order += "disk /"
 order += "disk /tmp"
