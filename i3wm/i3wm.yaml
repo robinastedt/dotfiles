@@ -3,12 +3,9 @@
   become: true
   ansible.builtin.dnf:
     name:
-      - i3
-      - i3status
-      - i3lock
-      - dunst
-      - dmenu
+      - "@i3-extended"
       - playerctl
+      - volumeicon
       - gnome-terminal
       - cool-retro-term
     state: latest
@@ -20,7 +17,6 @@
     state: directory
   with_items:
     - ~/.config/i3
-    - ~/.config/i3/scripts
     - ~/.config/i3status
     - ~/.config/i3status/scripts
 
@@ -42,7 +38,6 @@
   register: i3wm_scripts
   with_items:
     - i3status/scripts/wrapper.py
-    - i3/scripts/autostart.sh
 
 - name: "i3wm: Restart i3"
   shell: "i3 restart"

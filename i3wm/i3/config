@@ -136,9 +136,21 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Logout, reboot, shutdown
 set $Locker i3lock -c333333 -i ~/.config/i3/background.png && sleep 1
 
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex-autostart --autostart --environment i3
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker --nofork
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Logout, reboot, shutdown
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
@@ -185,18 +197,20 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status | ~/.config/i3status/scripts/wrapper.py
+        status_command i3status
+        #status_command i3status | ~/.config/i3status/scripts/wrapper.py
 }
 
 # Media controls
 # bindsym $mod+Ctrl+space exec playerctl play-pause
 # bindsym --whole-window --border button9 exec playerctl play-pause
 
-# Pulse Audio controls
-# TODO: Replace with other tool
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -217,8 +231,7 @@ bindsym $mod+Print exec /usr/bin/gnome-screenshot --interactive
 # bindsym $mod+Shift+Print exec /usr/bin/gnome-screenshot --area
 
 # Background image
-exec --no-startup-id /usr/bin/feh --bg-fill --no-xinerama ~/Pictures/Wallpapers/Mountains_Forests_Scenery_Nature_4K.png
-#exec --no-startup-id /usr/bin/feh --bg-fill --no-xinerama /home/robin/Pictures/Wallpapers/close-up-of-fish-over-black-background-325044.jpg
+exec --no-startup-id /usr/bin/feh --bg-fill --no-xinerama ~/.config/i3/background.png
 
 # Start compton
 #exec_always --no-startup-id compton
@@ -226,6 +239,4 @@ exec --no-startup-id /usr/bin/feh --bg-fill --no-xinerama ~/Pictures/Wallpapers/
 #Xrandr
 exec /usr/bin/xrandr --refresh 120 
 
-# XDG Autostart
-exec --no-startup-id bash ~/.config/i3/scripts/autostart.sh
 
