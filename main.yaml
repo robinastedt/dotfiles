@@ -4,5 +4,6 @@
   hosts: localhost
   tasks:
     - include_tasks: i3wm/i3wm.yaml
+    - include_tasks: volumeicon/volumeicon.yaml
     - include_tasks: redshift/redshift.yaml
 ...

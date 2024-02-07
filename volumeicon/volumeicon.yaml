@@ -1,0 +1,21 @@
+- name: "volumeicon: Install packages"
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - volumeicon
+    state: latest
+
+- name: "volumeicon: Create directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/.config/volumeicon
+
+- name: "volumeicon: Copy configuration files"
+  copy:
+    src: "config/{{ item }}"
+    dest: "~/.config/{{ item }}"
+  register: i3wm_config
+  with_items:
+    - volumeicon/volumeicon
