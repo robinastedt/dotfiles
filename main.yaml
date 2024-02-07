@@ -1,9 +1,6 @@
 
 ---
-- name: Install configuration
-  hosts: localhost
+- hosts: localhost
   tasks:
-    - include_tasks: i3wm/i3wm.yaml
-    - include_tasks: volumeicon/volumeicon.yaml
-    - include_tasks: redshift/redshift.yaml
+    - include_tasks: tasks/all.yaml
 ...

@@ -22,7 +22,7 @@
 
 - name: "i3wm: Copy configuration files"
   copy:
-    src: "{{ item }}"
+    src: "config/{{ item }}"
     dest: "~/.config/{{ item }}"
   register: i3wm_config
   with_items:
@@ -32,7 +32,7 @@
 
 - name: "i3wm: Copy scripts"
   copy:
-    src: "{{ item }}"
+    src: "config/{{ item }}"
     dest: "~/.config/{{ item }}"
     mode: 0755
   register: i3wm_scripts
