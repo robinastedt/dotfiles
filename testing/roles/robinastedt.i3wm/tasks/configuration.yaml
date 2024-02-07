@@ -1,0 +1,13 @@
+---
+- name: 'Update i3wm config files'
+  copy:
+    src: 'files/{{ item.path }}'
+    dest: '~/Projects/dotfiles/testing{{ xdg_config_home }}/{{ item.path }}'
+    mode: '{{ item.mode }}'
+  register: i3wm_config
+  with_items:
+    - { mode: '644', path: 'i3' }
+    - { mode: '644', path: 'i3status' }
+#     - { mode: '755', path: 'i3/scripts/autostart.sh' }
+
+...

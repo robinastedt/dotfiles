@@ -1,0 +1,13 @@
+---
+# Where user-specific configurations should be written (analogous to /etc).
+xdg_config_home: "{{ ansible_user_dir }}/.config"
+
+# Where user-specific non-essential (cached) data should be written (analogous to /var/cache).
+xdg_cache_home: "{{ ansible_user_dir }}/.cache"
+
+# Where user-specific data files should be written (analogous to /usr/share).
+xdg_data_home: "{{ ansible_user_dir }}/.local/share"
+
+# Where user-specific state files should be written (analogous to /var/lib).
+xdg_state_home: "{{ ansible_user_dir }}/.local/state"
+...

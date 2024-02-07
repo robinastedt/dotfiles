@@ -1,0 +1,22 @@
+---
+- name: "Install i3wm (requires restart of i3)"
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - i3
+      - i3status
+    state: latest
+  register: i3wm_packages
+
+- name: "Install additional packages for i3 desktop environment"
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - i3lock
+      - dmenu
+      - dunst
+      - playerctl
+      - gnome-terminal
+      - cool-retro-term
+    state: latest
+...

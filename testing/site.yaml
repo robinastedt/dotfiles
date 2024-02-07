@@ -1,0 +1,3 @@
+---
+# file site.yaml
+- include: plays/desktop.yaml
