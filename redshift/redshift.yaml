@@ -1,0 +1,17 @@
+---
+- name: "redshift: Install packages"
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - redshift
+      - geoclue2
+    state: latest
+  register: redshift_packages
+
+- name: "redshift: Start/enable service"
+  become: false
+  ansible.builtin.service:
+    name: redshift
+    enabled: yes
+    state: started
+    scope: user
