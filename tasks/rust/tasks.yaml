@@ -1,0 +1,27 @@
+---
+- name: 'rust: Install packages'
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - rustup
+    state: latest
+
+- name: 'rust: Create directories'
+  file:
+    path: '{{ item }}'
+    state: directory
+  with_items:
+    - '{{ xdg_data_home }}/rustup'
+    - '{{ xdg_data_home}}/cargo'
+
+- name: 'rust: Copy environment files'
+  copy:
+    src: 'files/config/{{ item.path }}'
+    dest: '{{ xdg_config_home }}/{{ item.path }}'
+    mode: '{{ item.mode }}'
+  with_items:
+    - { mode: '644', path: 'profile.d/rust.sh' }
+...
+
+# TODO: Automatically install with rustup-init --no-modify-path?
+# We source cargo env in the profile.d script instead

@@ -8,6 +8,7 @@
 - include_tasks: gnupg/tasks.yaml
 - include_tasks: pass/tasks.yaml
 - include_tasks: redshift/tasks.yaml
+- include_tasks: rust/tasks.yaml
 - include_tasks: vcpkg/tasks.yaml
 - include_tasks: volumeicon/tasks.yaml
 ...
