@@ -1,7 +1,9 @@
 
 ---
+# Profile and i3wm need to be included first as they set up a lot of directories etc.
 - include_tasks: profile.yaml
 - include_tasks: i3wm.yaml
+- include_tasks: gnupg.yaml
 - include_tasks: volumeicon.yaml
 - include_tasks: redshift.yaml
 ...

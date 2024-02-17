@@ -1,0 +1,24 @@
+---
+- name: 'GnuPG: Install packages'
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - gnupg2
+    state: latest
+
+- name: 'GnuPG: Create config directory'
+  file:
+    path: '{{ xdg_config_home }}/gnupg'
+    state: directory
+    recurse: yes
+    mode: '700'
+
+- name: 'GnuPG: Copy configuration files'
+  copy:
+    src: 'files/gnupg/{{ item.path }}'
+    dest: '{{ xdg_config_home }}/{{ item.path }}'
+    mode: '{{ item.mode }}'
+  with_items:
+    - { mode: '644', path: 'profile.d/gnupg.sh' }
+
+...
