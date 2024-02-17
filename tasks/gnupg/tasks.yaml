@@ -15,7 +15,7 @@
 
 - name: 'GnuPG: Copy configuration files'
   copy:
-    src: 'files/gnupg/{{ item.path }}'
+    src: 'files/config/{{ item.path }}'
     dest: '{{ xdg_config_home }}/{{ item.path }}'
     mode: '{{ item.mode }}'
   with_items:

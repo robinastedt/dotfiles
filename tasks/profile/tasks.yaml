@@ -1,7 +1,7 @@
 ---
 - name: 'Profile: Copy entry point .profile configuration'
   copy:
-    src: 'files/profile/{{ item }}'
+    src: 'files/{{ item }}'
     dest: '~/{{ item }}'
     mode: '644'
   with_items:
