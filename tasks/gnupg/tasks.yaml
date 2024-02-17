@@ -8,10 +8,11 @@
 
 - name: 'GnuPG: Create config directory'
   file:
-    path: '{{ xdg_config_home }}/gnupg'
+    path: '{{ xdg_config_home }}/{{ item.path }}'
     state: directory
-    recurse: yes
-    mode: '700'
+    mode: '{{ item.mode }}'
+  with_items:
+    - { mode: '700', path: 'gnupg' }
 
 - name: 'GnuPG: Copy configuration files'
   copy:
@@ -20,5 +21,6 @@
     mode: '{{ item.mode }}'
   with_items:
     - { mode: '644', path: 'profile.d/gnupg.sh' }
-
+    - { mode: '600', path: 'gnupg/gpg.conf'}
+    - { mode: '600', path: 'gnupg/gpg-agent.conf'}
 ...
