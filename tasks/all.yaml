@@ -1,5 +1,6 @@
 
 ---
+- include_tasks: profile.yaml
 - include_tasks: i3wm.yaml
 - include_tasks: volumeicon.yaml
 - include_tasks: redshift.yaml
