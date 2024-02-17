@@ -4,6 +4,7 @@
 - include_tasks: profile/tasks.yaml
 - include_tasks: i3wm/tasks.yaml
 - include_tasks: gnupg/tasks.yaml
+- include_tasks: pass/tasks.yaml
 - include_tasks: volumeicon/tasks.yaml
 - include_tasks: redshift/tasks.yaml
 ...
