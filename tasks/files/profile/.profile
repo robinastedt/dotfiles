@@ -10,6 +10,11 @@ export XDG_CACHE_HOME
 export XDG_DATA_HOME
 export XDG_STATE_HOME
 
+if ! [[ "$PATH" =~ "$HOME/.local/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 for file in "${XDG_CONFIG_HOME}/profile.d/*.sh"
 do
     source $file
