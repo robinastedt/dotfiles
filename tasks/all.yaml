@@ -1,10 +1,13 @@
 
 ---
-# Profile and i3wm need to be included first as they set up a lot of directories etc.
+# Environment (needs to be included first)
 - include_tasks: profile/tasks.yaml
 - include_tasks: i3wm/tasks.yaml
+
+# General software
 - include_tasks: gnupg/tasks.yaml
 - include_tasks: pass/tasks.yaml
-- include_tasks: volumeicon/tasks.yaml
 - include_tasks: redshift/tasks.yaml
+- include_tasks: vcpkg/tasks.yaml
+- include_tasks: volumeicon/tasks.yaml
 ...

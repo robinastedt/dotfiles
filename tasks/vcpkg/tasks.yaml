@@ -1,0 +1,23 @@
+---
+- name: 'vcpkg: Install packages'
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - vcpkg
+    state: latest
+
+- name: 'vcpkg: Create data directory'
+  file:
+    path: '{{ xdg_data_home }}/{{ item }}'
+    state: directory
+  with_items:
+    - 'vcpkg'
+
+- name: 'pass: Copy environment files'
+  copy:
+    src: 'files/config/{{ item.path }}'
+    dest: '{{ xdg_config_home }}/{{ item.path }}'
+    mode: '{{ item.mode }}'
+  with_items:
+    - { mode: '644', path: 'profile.d/vcpkg.sh' }
+...
