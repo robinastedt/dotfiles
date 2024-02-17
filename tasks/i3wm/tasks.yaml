@@ -14,7 +14,6 @@
   file:
     path: '{{ xdg_config_home }}/{{ item }}'
     state: directory
-    recurse: yes
   with_items:
     - i3
     - i3status

@@ -9,7 +9,6 @@
   file:
     path: '{{ xdg_config_home }}/{{ item }}'
     state: directory
-    recurse: yes
   with_items:
     - 'volumeicon'
 
