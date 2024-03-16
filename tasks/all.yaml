@@ -4,6 +4,9 @@
 - include_tasks: profile/tasks.yaml
 - include_tasks: i3wm/tasks.yaml
 
+# Software used by others
+- include_tasks: git/tasks.yaml
+
 # General software
 - include_tasks: gnupg/tasks.yaml
 - include_tasks: pass/tasks.yaml

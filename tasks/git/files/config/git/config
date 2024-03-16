@@ -1,0 +1,5 @@
+[user]
+    name = Robin Åstedt
+    email = robin.astedt@gmail.com
+[init]
+    defaultBranch = master
