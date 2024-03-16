@@ -1,0 +1,10 @@
+---
+- name: 'vpn: Install packages'
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - wireguard-tools
+    state: latest
+
+# TODO: Store vpn config files encrypted and install them at /etc/wireguard and enable service wg-quick@<config>
+...

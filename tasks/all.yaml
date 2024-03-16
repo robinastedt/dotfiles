@@ -11,4 +11,5 @@
 - include_tasks: rust/tasks.yaml
 - include_tasks: vcpkg/tasks.yaml
 - include_tasks: volumeicon/tasks.yaml
+- include_tasks: vpn/tasks.yaml
 ...
