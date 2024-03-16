@@ -21,4 +21,9 @@
     mode: '{{ item.mode }}'
   with_items:
     - { mode: '644', path: 'git/config' }
+
+- name: 'git: Delete conflicting config files'
+  file:
+    path: "{{ ansible_user_dir }}/.gitconfig"
+    state: absent
 ...
