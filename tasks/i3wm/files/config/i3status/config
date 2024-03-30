@@ -53,13 +53,15 @@ disk "/mnt/data" {
 # }
 
 load {
-    format = "🔲 Load: %1min"
+    format = "🔲 %1min %5min %15min"
+    format_above_threshold = "🔲 [WARNING] %1min %5min %15min"
+    max_threshold = "12"
 }
 
 memory {
-    format = "➖ Memory: %available"
-    threshold_degraded = "4G"
-    format_degraded = "MEMORY < %available"
+    format = "➖ %used/%total"
+    threshold_degraded = "8G"
+    format_degraded = "➖ [WARNING] %used/%total"
 }
 
 tztime local {
