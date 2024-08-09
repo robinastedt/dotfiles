@@ -232,15 +232,6 @@ bindsym XF86MonBrightnessUp exec lightctl up
 bindsym XF86MonBrightnessDown exec lightctl down
 
 # Start service that volumectl communicates with
-# Not available in Fedora, need to build from source: https://github.com/heyjuvi/avizo
-# Runtime: pamixer brightnessctl
-# Compile time: valac gtk3-devel gtk-layer-shell-devel
-# Output from installation:
-# Installing src/avizo-service to /usr/local/bin
-# Installing src/avizo-client to /usr/local/bin
-# Installing /home/robin/Projects/avizo/config.ini to /usr/local/etc/xdg/avizo
-# Installing /home/robin/Projects/avizo/volumectl to /usr/local/bin
-# Installing /home/robin/Projects/avizo/lightctl to /usr/local/bin
 exec "avizo-service"
 
 # Print whole screen

@@ -1,0 +1,38 @@
+# Only installs dependencies and config file,
+# Needs to be built and installed from source: https://github.com/heyjuvi/avizo
+
+# Files that are installed:
+# Installing src/avizo-service to /usr/local/bin
+# Installing src/avizo-client to /usr/local/bin
+# Installing /home/robin/Projects/avizo/config.ini to /usr/local/etc/xdg/avizo
+# Installing /home/robin/Projects/avizo/volumectl to /usr/local/bin
+# Installing /home/robin/Projects/avizo/lightctl to /usr/local/bin
+
+---
+- name: 'avizo: Install dependencies'
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - pamixer
+      - brightnessctl
+      # Compile time dependencies, technically not needed after being built.
+      - vala
+      - gtk3-devel
+      - gtk-layer-shell-devel
+    state: latest
+
+- name: 'avizo: Create directories'
+  file:
+    path: '{{ xdg_config_home }}/{{ item }}'
+    state: directory
+  with_items:
+    - 'avizo'
+
+- name: 'avizo: Copy configuration files'
+  copy:
+    src: 'files/config/{{ item.path }}'
+    dest: '{{ xdg_config_home }}/{{ item.path }}'
+    mode: '{{ item.mode }}'
+  with_items:
+    - { mode: '644', path: 'avizo/config.ini' }
+...

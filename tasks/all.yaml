@@ -3,6 +3,7 @@
 # Environment (needs to be included first)
 - include_tasks: profile/tasks.yaml
 # - include_tasks: i3wm/tasks.yaml
+- include_tasks: avizo/tasks.yaml
 - include_tasks: swaywm/tasks.yaml
 
 # Software used by others
