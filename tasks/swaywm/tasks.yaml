@@ -6,6 +6,9 @@
       - '@swaywm-extended'
       - gnome-terminal
       - cool-retro-term
+      # Needed for avizo, built and installed from source (See sway config)
+      - pamixer
+      - brightnessctl
     state: latest
   register: swaywm_packages
 
