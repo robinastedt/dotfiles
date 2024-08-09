@@ -8,6 +8,7 @@
 - include_tasks: git/tasks.yaml
 
 # General software
+- include_tasks: dnf/tasks.yaml
 - include_tasks: gnupg/tasks.yaml
 - include_tasks: pass/tasks.yaml
 - include_tasks: redshift/tasks.yaml

@@ -1,0 +1,18 @@
+---
+- name: "dnf: Install packages"
+  become: true
+  ansible.builtin.dnf:
+    name:
+      - dnf
+      - dnf5
+      - dnf-automatic
+    state: latest
+
+- name: "dnf-automatic: Start/enable service"
+  become: true
+  ansible.builtin.service:
+    name: dnf-automatic-install.timer
+    enabled: yes
+    state: started
+    scope: system
+...
