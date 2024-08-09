@@ -215,15 +215,33 @@ bar {
 # bindsym $mod+Ctrl+space exec playerctl play-pause
 # bindsym --whole-window --border button9 exec playerctl play-pause
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# Volume controls
+bindsym XF86AudioRaiseVolume exec volumectl -u up
+bindsym XF86AudioLowerVolume exec volumectl -u down
+bindsym XF86AudioMute exec volumectl toggle-mute
+bindsym XF86AudioMicMute exec volumectl -m toggle-mute
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec lightctl up
+bindsym XF86MonBrightnessDown exec lightctl down
+
+# Start service that volumectl communicates with
+# Not available in Fedora, need to build from source: https://github.com/heyjuvi/avizo
+# Runtime: pamixer brightnessctl
+# Compile time: valac gtk3-devel gtk-layer-shell-devel
+# Output from installation:
+# Installing src/avizo-service to /usr/local/bin
+# Installing src/avizo-client to /usr/local/bin
+# Installing /home/robin/Projects/avizo/config.ini to /usr/local/etc/xdg/avizo
+# Installing /home/robin/Projects/avizo/volumectl to /usr/local/bin
+# Installing /home/robin/Projects/avizo/lightctl to /usr/local/bin
+exec "avizo-service"
 
 # Print whole screen
 bindsym Print exec /usr/bin/gnome-screenshot
