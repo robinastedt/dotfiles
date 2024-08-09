@@ -248,9 +248,9 @@ exec --no-startup-id /usr/bin/feh --bg-fill --no-xinerama ~/.config/i3/backgroun
 # Start compton
 #exec_always --no-startup-id compton
 
-#Xrandr
-exec /usr/bin/xrandr --refresh 120 
-
+output "ASUSTek COMPUTER INC ASUS XG438 0x0001EAA0" {
+    mode 3840x2160@120Hz
+}
 
 input "type:keyboard" {
     xkb_layout se
