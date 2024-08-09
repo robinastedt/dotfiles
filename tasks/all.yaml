@@ -2,7 +2,8 @@
 ---
 # Environment (needs to be included first)
 - include_tasks: profile/tasks.yaml
-- include_tasks: i3wm/tasks.yaml
+# - include_tasks: i3wm/tasks.yaml
+- include_tasks: swaywm/tasks.yaml
 
 # Software used by others
 - include_tasks: git/tasks.yaml
@@ -14,6 +15,6 @@
 - include_tasks: redshift/tasks.yaml
 - include_tasks: rust/tasks.yaml
 - include_tasks: vcpkg/tasks.yaml
-- include_tasks: volumeicon/tasks.yaml
+# - include_tasks: volumeicon/tasks.yaml  # Xorg app, does not work in Sway.
 - include_tasks: vpn/tasks.yaml
 ...

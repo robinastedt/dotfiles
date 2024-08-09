@@ -159,10 +159,6 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $Locker --nofork
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
 # Logout, reboot, shutdown
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -246,3 +242,8 @@ exec --no-startup-id /usr/bin/feh --bg-fill --no-xinerama ~/.config/i3/backgroun
 exec /usr/bin/xrandr --refresh 120 
 
 
+input "type:keyboard" {
+    xkb_layout se
+    #xkb_variant nodeadkeys
+    #xkb_options grp:alt_shift_toggle
+}
