@@ -6,6 +6,7 @@
       - '@swaywm-extended'
       - gnome-terminal
       - cool-retro-term
+      - grimshot
     state: latest
   register: swaywm_packages
 

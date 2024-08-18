@@ -234,13 +234,12 @@ bindsym XF86MonBrightnessDown exec lightctl down
 # Start service that volumectl communicates with
 exec "avizo-service"
 
-# Print whole screen
-bindsym Print exec /usr/bin/gnome-screenshot
-# Print interactive
-bindsym $mod+Print exec /usr/bin/gnome-screenshot --interactive
+set $screenshot_path $HOME/Pictures/Screenshots/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png
+
+# Print whole screen (current output)
+bindsym Print exec --no-startup-id grimshot save output $screenshot_path
 # Print area
-# TODO: Not working?
-# bindsym $mod+Shift+Print exec /usr/bin/gnome-screenshot --area
+bindsym $mod+Print exec --no-startup-id grimshot save area $screenshot_path
 
 # Background image
 exec --no-startup-id /usr/bin/feh --bg-fill --no-xinerama ~/.config/i3/background.png
