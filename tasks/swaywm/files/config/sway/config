@@ -256,3 +256,7 @@ input "type:keyboard" {
     #xkb_variant nodeadkeys
     #xkb_options grp:alt_shift_toggle
 }
+
+# TODO: Align with default, perhaps only use $XDG_CONFIG_HOME/sway/config.d for overrides?
+
+

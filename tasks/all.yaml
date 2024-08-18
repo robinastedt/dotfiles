@@ -3,16 +3,15 @@
 # Environment (needs to be included first)
 - include_tasks: profile/tasks.yaml
 # - include_tasks: i3wm/tasks.yaml
-- include_tasks: avizo/tasks.yaml
 - include_tasks: swaywm/tasks.yaml
 
-# Software used by others
-- include_tasks: git/tasks.yaml
-
 # General software
+- include_tasks: avizo/tasks.yaml
 - include_tasks: dnf/tasks.yaml
+- include_tasks: foot/tasks.yaml
+- include_tasks: git/tasks.yaml
 - include_tasks: gnupg/tasks.yaml
-- include_tasks: pass/tasks.yaml
+- include_tasks: pass/tasks.yaml  # depends on git, gnupg
 - include_tasks: redshift/tasks.yaml
 - include_tasks: rust/tasks.yaml
 - include_tasks: vcpkg/tasks.yaml
