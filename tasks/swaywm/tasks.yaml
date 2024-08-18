@@ -39,6 +39,7 @@
     dest: '{{ xdg_config_home }}/{{ item }}'
   register: swaywm_config
   with_items:
+    - sway/config.d/font.conf
     - sway/config.d/keyboard.conf
     - sway/config.d/monitor.conf
     - sway/config.d/system-menu.conf
