@@ -5,6 +5,7 @@
     name:
       - '@swaywm-extended'
       - grimshot
+      - glibc-langpack-sv   # Needed to properly display calendar in waybar.
     state: latest
   register: swaywm_packages
 
