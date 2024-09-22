@@ -22,9 +22,9 @@
         "cpu",
         "memory",
         "temperature",
-        "backlight",
+        "backlight",    // Automatically disabled when not applicable.
         // "sway/language",
-        "battery",
+        "battery",      // Automatically disabled when not applicable.
         "clock",
         "tray"
     ],
