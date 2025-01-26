@@ -3,15 +3,23 @@
   become: true
   ansible.builtin.dnf:
     name:
-      - dnf
       - dnf5
-      - dnf-automatic
+      - dnf5-plugin-automatic
     state: latest
+
+- name: 'dnf-automatic: Copy configuration file'
+  become: true
+  ansible.builtin.copy:
+    src: 'files/automatic.conf'
+    dest: '/etc/dnf/automatic.conf'
+    mode: u=rw,g=r,o=r
+    owner: 'root'
+    group: 'root'
 
 - name: "dnf-automatic: Start/enable service"
   become: true
   ansible.builtin.service:
-    name: dnf-automatic-install.timer
+    name: dnf-automatic.timer
     enabled: yes
     state: started
     scope: system
