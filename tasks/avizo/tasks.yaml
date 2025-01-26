@@ -16,9 +16,9 @@
       - pamixer
       - brightnessctl
       # Compile time dependencies, technically not needed after being built.
-      - vala
-      - gtk3-devel
-      - gtk-layer-shell-devel
+      #- vala
+      #- gtk3-devel
+      #- gtk-layer-shell-devel
     state: latest
 
 - name: 'avizo: Create directories'
