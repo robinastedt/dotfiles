@@ -44,6 +44,7 @@
     - sway/config.d/keyboard.conf
     - sway/config.d/monitor.conf
     - sway/config.d/system-menu.conf
+    - sway/config.d/95-xdg-user-dirs.conf
     - waybar/config.jsonc
     - waybar/style.css
 
