@@ -23,7 +23,7 @@
         "memory",
         "temperature",
         "backlight",    // Automatically disabled when not applicable.
-        // "sway/language",
+        "sway/language",
         "battery",      // Automatically disabled when not applicable.
         "clock",
         "tray"
