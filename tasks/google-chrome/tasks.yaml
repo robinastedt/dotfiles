@@ -1,0 +1,12 @@
+---
+
+- name: 'google-chrome: Install wrapper scripts'
+  become: true
+  copy:
+    src: 'files/{{ item.path }}'
+    dest: '/{{ item.path }}'
+    mode: '{{ item.mode }}'
+  with_items:
+    - { mode: '755', path: 'usr/local/bin/google-chrome' }
+    - { mode: '644', path: 'usr/local/share/applications/google-chrome.desktop' }
+...

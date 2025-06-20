@@ -10,6 +10,7 @@
 - include_tasks: foot/tasks.yaml
 - include_tasks: git/tasks.yaml
 - include_tasks: gnupg/tasks.yaml
+- include_tasks: google-chrome/tasks.yaml
 - include_tasks: pass/tasks.yaml  # depends on git, gnupg
 - include_tasks: redshift/tasks.yaml
 - include_tasks: rust/tasks.yaml
